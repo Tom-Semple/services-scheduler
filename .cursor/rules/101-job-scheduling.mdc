@@ -1,0 +1,30 @@
+---
+description: Job scheduling and assignment logic with MCP integration
+globs: "src/{components,pages,hooks}/**/*{job,schedule}*.{ts,tsx}"
+---
+
+# Job Scheduling Rules with MCP
+
+## Database Operations via MCP
+Use Supabase MCP server's execute_sql tool for all job-related database operations including creating, updating, and querying jobs. Use apply_migration tool for job table schema changes and generate_typescript_types for accurate job data types.
+
+## Job Creation Workflow
+Implement step-by-step job creation using MCP server for data persistence: customer selection with autocomplete via MCP queries, property selection filtered by chosen customer, job type from predefined list, date/time with weather validation, automatic contractor assignment based on territory, SMS notification sending.
+
+## Auto-Assignment Algorithm
+Filter available contractors using MCP server queries by territory match and required skills. Sort by current workload with preference for contractors with fewer active jobs retrieved via MCP database queries. Respect maximum daily job limits per contractor. Provide manual override option for admin.
+
+## Job Data Management
+Store job information using MCP server with essential fields: job type, customer/property references, assigned contractor, scheduled date/time, equipment requirements, and status. Use execute_sql tool for complex job queries with proper filtering and joins.
+
+## Equipment Management Integration
+Map job types to required equipment lists stored and retrieved via MCP server. Lawn Cutting requires Mower, Strimmer, Safety gear, Collection bags. Hedge Trimming needs Hedge trimmer, Pruning shears, Ladder, Safety gear. Track equipment availability and location through database via MCP.
+
+## Job Status Tracking
+Implement simple status progression stored in database via MCP server: Scheduled → In Progress → Completed. Add optional Issues status for problems. Allow status updates via unique contractor links that update database through MCP server. Update admin dashboard in real-time using database changes.
+
+## Real-time Updates
+Use MCP server's database capabilities for job status monitoring. Implement efficient polling or subscription patterns for job updates. Handle concurrent job modifications through proper database locking via MCP server operations.
+
+## Query Optimization
+Leverage MCP server's execute_sql tool for complex job queries with proper indexing and filtering. Retrieve job lists with customer and property details using SQL joins rather than multiple separate queries.

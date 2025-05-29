@@ -1,0 +1,33 @@
+---
+description: Supabase database patterns and MCP server integration
+globs: "**/*{hook,service,api}*.{ts,tsx}"
+---
+
+# Database Patterns with Supabase MCP
+
+## MCP Server Integration
+Leverage the connected Supabase MCP server for all database operations. The MCP server provides comprehensive database management tools that should be used instead of manual SQL operations.
+
+## Database Schema Management
+Use apply_migration tool from MCP server for all schema changes including table creation, column additions, and constraint modifications. Use list_tables to understand current database structure before making changes.
+
+## Data Operations
+Use execute_sql tool from MCP server for data queries, inserts, updates, and deletes. The MCP server handles connection management and error handling automatically.
+
+## TypeScript Integration
+Use generate_typescript_types tool from MCP server to create accurate type definitions based on current database schema. Regenerate types after schema changes to maintain type safety.
+
+## Table Relationships
+- customers → properties (one-to-many)
+- properties → jobs (one-to-many)
+- contractors → jobs (one-to-many)
+- jobs → equipment (array field)
+
+## Real-time Subscriptions
+Only use for critical features: job status updates, contractor availability, weather alerts. Keep subscriptions simple and clean up properly in useEffect cleanup.
+
+## Error Handling with MCP
+The MCP server provides structured error responses. Handle MCP tool errors gracefully and provide user-friendly feedback. Log MCP errors for debugging while showing simple messages to users.
+
+## Query Optimization
+Use the MCP server's execute_sql tool for complex queries with proper filtering and ordering. Let the database handle heavy lifting rather than filtering in JavaScript.

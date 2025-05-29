@@ -1,0 +1,24 @@
+---
+description: React component patterns and conventions
+globs: "src/components/**/*.{tsx,ts}"
+---
+
+# React Component Standards
+
+## Component Structure
+Define clear TypeScript interfaces for props using types generated from Supabase MCP server. Place hooks at the top of components. Create event handlers as separate functions. Use early returns for loading and error states. Keep JSX clean and readable.
+
+## Data Integration
+Use Supabase MCP server tools within custom hooks for data fetching. Leverage execute_sql tool for database queries and apply_migration for schema changes. Always use generated TypeScript types from MCP server for type safety.
+
+## Styling Approach
+Use Tailwind utility classes with red theme colors. Apply CSS custom properties for brand colors defined in theme.css. Implement mobile-first responsive design patterns. Avoid complex nested flexbox layouts.
+
+## Component Organization
+One component per file. Props interface defined above component using MCP-generated types where applicable. Export component at bottom of file. Keep components under 150 lines. Break into smaller components when needed.
+
+## State Management
+Use useState for local component state. Create custom hooks for complex business logic that interact with Supabase via MCP server. Use React Context sparingly for truly global state. Avoid prop drilling beyond 2-3 levels.
+
+## Database Integration
+Always use custom hooks that wrap MCP server tools for database operations. Handle loading states while MCP operations are in progress. Provide error handling for failed MCP tool calls. Cache data appropriately to minimize MCP server requests.

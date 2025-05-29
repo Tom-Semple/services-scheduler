@@ -1,0 +1,39 @@
+---
+description: Core lawn service business logic and platform rules
+globs: "**/*.{ts,tsx,js,jsx}"
+alwaysApply: true
+---
+
+# Lawn Service Scheduler - Core Business Rules
+
+## Project Overview
+Focused lawn service scheduling platform for 1 admin + 3 contractors.
+
+## Core Entities
+- Customer: name, phone, properties
+- Property: address, customer, terrain, access instructions  
+- Job: service type, date, assigned contractor, equipment
+- Contractor: name, phone, territories, skills, calendar endpoint
+
+## Key Workflows
+1. One-Click Scheduling: Customer → Property → Job Type → Auto-assign → SMS + Calendar
+2. Territory Assignment: Auto-route by contractor areas (North/South/East/West)
+3. Equipment Tracking: Job type → required equipment checklist
+4. Weather Integration: Check forecast before outdoor scheduling
+5. SMS Notifications: Twilio for job assignments
+
+## Supabase MCP Integration
+Use the connected Supabase MCP server for all database operations. The MCP server provides direct access to Supabase tools:
+- Use list_tables to understand database schema
+- Use execute_sql for data queries and operations
+- Use apply_migration for schema changes and table creation
+- Use generate_typescript_types to create type definitions
+- Always leverage the MCP server's database tools rather than writing manual SQL
+
+## Simplicity Rules
+- No over-engineering - solve immediate problem simply
+- No complex abstractions unless absolutely necessary
+- Direct database operations via MCP tools, minimal middleware
+- Clear naming matching business terminology
+- Keep functions focused and testable
+- Use MCP server capabilities for database introspection and operations

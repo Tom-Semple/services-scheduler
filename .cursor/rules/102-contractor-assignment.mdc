@@ -1,0 +1,30 @@
+---
+description: Contractor management and territory assignment with MCP integration
+globs: "src/{components,pages,hooks}/**/*contractor*.{ts,tsx}"
+---
+
+# Contractor Management with MCP
+
+## Database Schema for Contractors
+Use Supabase MCP server's apply_migration tool to create and modify contractor table structure. Store contractor information including id, name, phone, email via MCP database operations. Use generate_typescript_types to create accurate contractor interfaces.
+
+## Contractor Profile Data Management
+Define territories as arrays containing North, South, East, West, Central areas stored in database via MCP server. List skills as arrays of service types they can perform. Include CalDAV calendar connection details and maximum daily job capacity. Use execute_sql tool for all contractor CRUD operations.
+
+## Territory Assignment Database Design
+Implement postcode-based territory assignment using MCP server database queries for North, South, East, West areas. Use Central as default overflow area stored in contractor records. Create territory boundaries that make geographic sense for efficient routing using database-driven logic.
+
+## Assignment Logic with Database Integration
+Check territory match first using MCP server queries as primary criteria. Verify skill match for job type as secondary criteria through database filtering. Consider current workload as third factor calculated via MCP server job count queries. Always respect maximum daily job limits stored in contractor profiles.
+
+## Contractor Availability Tracking
+Use MCP server to track contractor availability and current job assignments. Query active job counts per contractor for workload balancing. Update contractor status and availability through database operations. Provide clear feedback when no contractors available based on database constraints.
+
+## Calendar Integration Data Flow
+Push job assignments to contractor calendar applications via CalDAV protocol. Store calendar event IDs and sync status in database via MCP server. Create calendar events with descriptive titles, customer contact details, property addresses, and unique job information links for status updates.
+
+## Performance Optimization
+Use MCP server's execute_sql tool for efficient contractor queries with proper indexing. Retrieve contractor availability data with optimized SQL queries. Cache frequently accessed contractor information while maintaining data consistency through database operations.
+
+## Data Relationships
+Maintain contractor-job relationships through database foreign keys managed via MCP server. Track contractor performance metrics through job completion data. Store contractor preferences and specializations for better job matching using database-driven algorithms.
