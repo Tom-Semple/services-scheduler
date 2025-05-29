@@ -6,31 +6,30 @@ A comprehensive service scheduling system for grass cutting and lawn care busine
 
 ```
 services-scheduler/
-├── lawn-scheduler/          # Main application directory
-│   ├── src/                # Source code
-│   ├── public/             # Static assets
-│   ├── package.json        # Dependencies and scripts
-│   └── vite.config.ts      # Build configuration
+├── src/                    # Source code
+├── public/                 # Static assets  
+├── package.json            # Dependencies and scripts
+├── vite.config.ts          # Build configuration
+├── tsconfig.json           # TypeScript configuration
+├── eslint.config.js        # ESLint configuration
+├── index.html              # Main HTML file
 ├── .gitignore              # Git ignore patterns
 └── README.md               # This file
 ```
 
 ## Getting Started
 
-1. Navigate to the application directory:
-   ```bash
-   cd lawn-scheduler
-   ```
-
-2. Install dependencies:
+1. Install dependencies:
    ```bash
    npm install
    ```
 
-3. Start the development server:
+2. Start the development server:
    ```bash
    npm run dev
    ```
+
+3. Open your browser to `http://localhost:5173`
 
 ## Features
 
@@ -47,6 +46,13 @@ This project uses:
 - Vite for building and development
 - ESLint for code quality
 
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
 ## Contributing
 
 1. Create a new branch for your feature
@@ -56,4 +62,4 @@ This project uses:
 
 ## License
 
-[Add your license information here] 
+[Add your license information here]
