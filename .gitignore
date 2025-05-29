@@ -36,7 +36,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-.cursor/*
+.cursor/
+.project-info/
 
 # OS generated files
 Thumbs.db
